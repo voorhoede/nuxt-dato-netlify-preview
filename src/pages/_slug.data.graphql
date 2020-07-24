@@ -1,0 +1,8 @@
+query($slug: String) {
+  page(filter: {
+    slug: { eq: $slug }
+  }) {
+    title
+    body
+  }
+}

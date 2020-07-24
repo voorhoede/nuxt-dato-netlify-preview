@@ -1,0 +1,17 @@
+{
+  "name": "nuxt-dato-netlify-preview",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "APP_PREVIEW=true nuxt",
+    "build::production": "APP_PREVIEW=false nuxt build && nuxt export",
+    "build::preview": "APP_PREVIEW=true nuxt generate",
+    "serve": "nuxt serve"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "nuxt": "^2.13.0",
+    "webpack-graphql-loader": "^1.0.2"
+  },
+  "devDependencies": {}
+}

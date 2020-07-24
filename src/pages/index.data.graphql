@@ -1,0 +1,9 @@
+query {
+  page: home {
+    title
+  }
+  links: allPages {
+    title
+    slug
+  }
+}
