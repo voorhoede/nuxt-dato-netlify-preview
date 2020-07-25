@@ -1,5 +1,7 @@
-const isPreview = (process.env.APP_PREVIEW === 'true');
-console.log({ isPreview })
+const datoApiToken = process.env.DATO_API_TOKEN
+const isPreview = (process.env.APP_PREVIEW === 'true')
+
+console.log(`\n Preview Mode is ${isPreview ? 'ON' : 'OFF'} \n`)
 
 export default {
   srcDir: 'src/',
@@ -8,6 +10,15 @@ export default {
   generate: {
     crawler: !isPreview,
     devtools: isPreview,
+    exclude: isPreview ? [/.*/] : [],
+  },
+
+  privateRuntimeConfig: {
+    datoApiToken,
+  },
+  publicRuntimeConfig: {
+    datoApiToken: isPreview ? datoApiToken : undefined,
+    isPreview,
   },
 
   head: {
@@ -24,12 +35,20 @@ export default {
         test: /\.graphql?$/,
         loader: 'webpack-graphql-loader',
       });
+    },
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: false,
+        minifyJS: false,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
     }
-  },
-
-  env: {
-    DATO_API_TOKEN: process.env.DATO_API_TOKEN ,
-    isPreview,
   },
 
   plugins: [

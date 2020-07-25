@@ -3,9 +3,15 @@
   publish = "dist/"
   [build.processing]
     skip_processing = true
+  [build.environment]
+    CI = "1" # https://www.voorhoede.nl/en/blog/10x-faster-nuxt-builds-on-netlify/#skip-streaming-logs
+    NPM_CONFIG_AUDIT = "false"
 
 [context.preview]
   environment = { APP_PREVIEW = "true" }
+
+[dev]
+  dir = "dist/"
 
 [[headers]]
   for = "/*"
