@@ -24,6 +24,7 @@ So this setup adds a preview environment which always loads the latest (draft an
 - supports Vue devtools
 - basic auth password protection (so only editors can view)
 - builds on changes on `preview` branch
+- `preview` branch is automatically updated after a successful deploy of the `master` branch
 - can be triggered by editors in CMS (but most changes don't need new build)
 - can be visited by editors via link in CMS (link contains basic auth credentials)
 
@@ -35,7 +36,6 @@ So this setup adds a preview environment which always loads the latest (draft an
 
 ## To do
 
-- [ ] automatically keep `preview` branch in sync with `master` branch
 - [ ] preview link per item in Dato CMS (use or make plugin?)
 
 
@@ -45,7 +45,7 @@ So this setup adds a preview environment which always loads the latest (draft an
 - [`nuxt.config.js`](nuxt.config.js) settings are based on environment variable (`APP_PREVIEW`).
 - [GraphQL request plugin](src/plugins/graphql-request.js) switches GraphQL endpoint based on environment variable (`APP_PREVIEW`).
 - Password protection is set based on environment variables (`APP_PREVIEW`, `APP_PREVIEW_USERNAME` and `APP_PREVIEW_PASSWORD`).
-- Automatically keep `preview` branch in sync with `master` branch using ...
+- `preview` branch is synced automatically with `master` branch - after successful production deploy - using a [postbuild script](scripts/sync-preview-branch). This requires a [GitHub deploy key](https://docs.github.com/en/developers/overview/managing-deploy-keys) set as `GITHUB_SSH_KEY` and a `GIT_ORIGIN_URL`.
 
 
 ## Setup

@@ -9,6 +9,7 @@
     "build:app": "scripts/build-app.sh",
     "build:headers": "node scripts/build-headers.js",
     "build:redirects": "node scripts/build-redirects.js",
+    "postbuild": "scripts/sync-preview-branch.sh",
     "build_production": "nuxt build && nuxt export",
     "build_preview": "nuxt generate",
     "start": "netlify dev --command='nuxt serve'"
