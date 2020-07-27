@@ -34,11 +34,6 @@ So this setup adds a preview environment which always loads the latest (draft an
 - loads latest draft and published data from Dato CMS (same as preview build)
 
 
-## To do
-
-- [ ] preview link per item in Dato CMS (use or make plugin?)
-
-
 ## How it works
 
 - [`netlify.toml`](netlify.toml) is configured to set environment variable `APP_PREVIEW` based on branch.
@@ -46,6 +41,12 @@ So this setup adds a preview environment which always loads the latest (draft an
 - [GraphQL request plugin](src/plugins/graphql-request.js) switches GraphQL endpoint based on environment variable (`APP_PREVIEW`).
 - Password protection is set based on environment variables (`APP_PREVIEW`, `APP_PREVIEW_USERNAME` and `APP_PREVIEW_PASSWORD`).
 - `preview` branch is synced automatically with `master` branch - after successful production deploy - using a [postbuild script](scripts/sync-preview-branch). This requires a [GitHub deploy key](https://docs.github.com/en/developers/overview/managing-deploy-keys) set as `GITHUB_SSH_KEY` and a `GIT_ORIGIN_URL`.
+
+
+## DatoCMS integration
+
+- Add a build trigger for the preview environment (via `/admin/build_triggers/new`) and set the "Website Frontend URL" to `https://{username}:{password}@preview--{sitename}.netlify.app/`.
+- Use with [DatoCMS Plugin: Preview links](https://github.com/voorhoede/datocms-plugin-preview-links) for specific content item preview link in sidebar.
 
 
 ## Setup

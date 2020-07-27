@@ -2,6 +2,7 @@
   "name": "nuxt-dato-netlify-preview",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "APP_PREVIEW=true netlify dev --command='nuxt'",
     "prebuild": "rimraf dist/ && touch .env",
